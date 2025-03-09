@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const connectDB = async () => {
   try {
-    // const conn = await mongoose.connect(`mongodb+srv://root:root@jamshed.174cw.mongodb.net/`);
+  
     const conn = await mongoose.connect(process.env.MONGODB_CON);
     console.log(`MongoDB Connected:${conn.connection.host}`);
   } catch (error) {
