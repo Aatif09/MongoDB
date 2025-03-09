@@ -9,4 +9,6 @@ const StudentSchema = new Schema({
 const StudentModel = model("Student", StudentSchema)
 
 
+
+
 export default StudentModel;
