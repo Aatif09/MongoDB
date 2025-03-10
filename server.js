@@ -34,6 +34,34 @@ app.post("/students", async (req, res) => {
   }
 
 });
+
+app.patch("/students/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, rollno, email } = req.body;
+    const updatedStudent = await StudentModel.findByIdAndUpdate(id, { name, rollno, email })
+    res.status(201).send("User Updated");
+  } catch (error) {
+    res.send({
+      status: 500,
+      message: "data nhn mila"
+    })
+  }
+
+});
+app.delete("/students/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedStudent = await StudentModel.findByIdAndDelete(id)
+    res.status(201).send("User Deleted");
+  } catch (error) {
+    res.send({
+      status: 500,
+      message: "data nhn mila"
+    })
+  }
+
+});
 app.listen(port, () => {
   console.log(`Hey Your server is running on http://localhost:${port}`)
 })
